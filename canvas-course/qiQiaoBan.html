@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid  #aaa; display: block; margin: auto;">
+        当用户的浏览器不支持canvas时，请及时更换浏览器！
+    </canvas>
+
+    <script>
+        var tangram = [
+            {p:[{x:0, y:0}, {x:400, y:400}, {x:0, y:800}], color:"#c9ff64"},
+            {p:[{x:0, y:0}, {x:400, y:400}, {x:800, y:0}], color:"#4ba3ff"},
+            {p:[{x:400, y:400}, {x:600, y:200}, {x:600, y:600}], color:"#f0ff61"},
+            {p:[{x:600, y:200}, {x:600, y:600}, {x:800, y:400}, {x:800, y:0}], color:"#bb3e3e"},
+            {p:[{x:400, y:400}, {x:200, y:600}, {x:400, y:800}, {x:600, y:600}], color:"#9b71bb"},
+            {p:[{x:0, y:800}, {x:200, y:600}, {x:400, y:800}], color:"#bb7894"},
+            {p:[{x:400, y:800}, {x:800, y:400}, {x:800, y:800}], color:"#ffef1b"}
+        ];
+
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            canvas.width = 800;
+            canvas.height = 800;
+            var context = canvas.getContext("2d");
+
+            for(var i = 0; i < tangram.length; i ++){
+                draw(tangram[i], context);
+            }
+        }
+
+        function draw(pice, ctx) {
+            ctx.beginPath();
+            ctx.moveTo(pice.p[0].x, pice.p[0].y);
+            for(var i = 1; i < pice.p.length; i ++){
+                ctx.lineTo(pice.p[i].x, pice.p[i].y);
+            }
+            ctx.closePath();
+
+            ctx.fillStyle = pice.color;
+            ctx.fill();
+
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

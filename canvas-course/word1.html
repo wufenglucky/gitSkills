@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>word</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid  #aaa; display: block; margin: auto;">
+    当用户的浏览器不支持canvas时，请及时更换浏览器！
+</canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+
+    canvas.width = 800;
+    canvas.height = 800;
+
+    context.font = "bold 40px Arial";
+    context.fillStyle = "#56c";
+    context.fillText("欢迎您", 40, 100,30);
+
+    context.strokeStyle = "#56c";
+    context.strokeText("欢迎您", 40, 200);
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid  #aaa; display: block; margin: auto;">
+    当用户的浏览器不支持canvas时，请及时更换浏览器！
+</canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    var image1 = new Image();
+    var image2 = new Image();
+
+    window.onload = function () {
+        canvas.width = 1000;
+        canvas.height = 600;
+
+        background();
+        image1.src = "img1.jpeg";
+        image2.src = "img2.jpeg";
+        image1.onload = function () {
+            context.drawImage(image1, 350, 180, 50, 70);
+        }
+        image2.onload = function () {
+            context.drawImage(image2, 550, 200, 80, 40);
+            context.drawImage(image2, 680, 200, 80, 40);
+        }
+    }
+    function background() {
+        context.fillStyle = "#0060cc";
+        context.beginPath();
+        context.moveTo(0,0);
+        context.lineTo(200, 120);
+        context.lineTo(800,120);
+        context.lineTo(1000,0);
+        context.closePath();
+        context.fill();
+
+        context.fillStyle = "#0093cc";
+        context.beginPath();
+        context.moveTo(0,0);
+        context.lineTo(200, 120);
+        context.lineTo(200,480);
+        context.lineTo(0,600);
+        context.closePath();
+        context.fill();
+
+        context.fillStyle = "#38aecc";
+        context.beginPath();
+        context.moveTo(0,600);
+        context.lineTo(200, 480);
+        context.lineTo(800,480);
+        context.lineTo(1000,600);
+        context.closePath();
+        context.fill();
+
+        context.fillStyle = "#0093cc";
+        context.beginPath();
+        context.moveTo(1000,0);
+        context.lineTo(800, 120);
+        context.lineTo(800,480);
+        context.lineTo(1000,600);
+        context.closePath();
+        context.fill();
+
+        context.fillStyle = "#04c1cc";
+        context.beginPath();
+        context.moveTo(200,120);
+        context.lineTo(800, 120);
+        context.lineTo(800,480);
+        context.lineTo(200,480);
+        context.closePath();
+        context.fill();
+    }
+</script>
+
+</body>
+</html>

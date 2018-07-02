@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drawImage</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid  #aaa; display: block; margin: auto;">
+    当用户的浏览器不支持canvas时，请及时更换浏览器！
+</canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    var image = new Image();
+
+    window.onload = function () {
+        canvas.width = 1024;
+        canvas.height = 768;
+
+        image.src = "img1.jpeg";
+        image.onload = function () {
+
+            context.drawImage(image, 0, 0, 50, 70);
+        }
+    }
+</script>
+</body>
+</html>

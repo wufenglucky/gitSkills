@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>circle</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid  #aaa; display: block; margin: auto;">
+        当用户的浏览器不支持canvas时，请及时更换浏览器！
+    </canvas>
+
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            canvas.width = 1024;
+            canvas.height = 768;
+            var context = canvas.getContext("2d");
+
+            // context.arc(400, 400, 200, 0, 0.5*Math.PI, true);
+            // context.lineWidth = 3;
+            // context.strokeStyle = "blue";
+            // context.stroke();
+            context.lineWidth = 3;
+            context.strokeStyle = "#68b1bb";
+            for(var i = 0; i < 10; i ++){
+                context.beginPath();
+                context.arc(50 + i * 100, 60, 40, 0, 2 * Math.PI * (i+1)/10);
+                context.closePath();//clospath()会将未封闭的曲线，自动封闭。
+
+                context.stroke();
+            }
+
+            for(var i = 0; i < 10; i ++){
+                context.beginPath();
+                context.arc(50 + i * 100, 150, 40, 0, 2 * Math.PI * (i+1)/10);
+
+                context.stroke();
+            }
+
+            context.fillStyle = "#93bb66"
+            for(var i = 0; i < 10; i ++){
+                context.beginPath();
+                context.arc(50 + i * 100, 240, 40, 0, 2 * Math.PI * (i+1)/10);
+                context.closePath();
+
+                context.fill();
+            }
+
+            context.fillStyle = "#170cbb"
+            for(var i = 0; i < 10; i ++){
+                context.beginPath();
+                context.arc(50 + i * 100, 360, 40, 0, 2 * Math.PI * (i+1)/10);
+
+                context.fill();
+            }
+        }
+    </script>
+</body>
+</html>

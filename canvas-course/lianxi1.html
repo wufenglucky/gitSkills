@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id='start' style="float: left;">开始</button>
+<button id="stop" style="float: left;">停止</button>
+<canvas id='canvas'>
+    您的浏览器不支持canvas画布
+</canvas>
+</body>
+<script>
+    var canvas=document.getElementById('canvas');
+    var context=canvas.getContext('2d');
+    canvas.width=500;
+    canvas.height=500;
+    var startAimate=true;
+    var shape=function(x,y){
+        this.x=x;
+        this.y=y;
+        this.width=width;
+        this.height=height;
+        this.reverseX=false;
+        this.reverseY=false;
+    };
+    var shapes=new Array();
+    for(var i=0;i<10;i++){
+        var x=Math.random()*250;
+        var y=Math.random()*250;
+        var width=height=Math.random()*50;
+        shapes.push(new shape(x,y,width,height));
+    };
+    function animateCanvas(){
+        context.clearRect(0,0,canvas.width,canvas.height);
+        for(var i=0;i<shapes.length;i++){
+            var tmpShape=shapes[i];
+            tmpShape.x+=Math.random()*4-2;
+            tmpShape.y+=Math.random()*4-2;
+            context.fillRect(tmpShape.x,tmpShape.y,tmpShape.width,tmpShape.height);
+            if(tmpShape.x<0){
+                tmpShape.reverseX=false;
+            }else if(tmpShape.x+tmpShape.width>canvas.width){
+                tmpShape.reverseX=true;
+            }
+            if(!tmpShape.reverseX){
+                tmpShape.x+=2;
+            }else{
+                tmpShape.x-=2;
+            }
+            if(!tmpShape.reverseY){
+                tmpShape.Y+=2;
+            }else{
+                tmpShape.Y-=2;
+            }
+        }
+        if(startAimate){
+            setTimeout(animateCanvas,33);
+        }
+    };
+    var start=document.getElementById('start');
+    var stop=document.getElementById('stop');
+    start.onclick=function(){
+        start.style.display="none";
+        stop.style.display="block";
+        startAimate=true;
+        animateCanvas();
+    };
+    stop.onclick=function(){
+        start.style.display='block';
+        stop.style.display='none';
+        startAimate=false;
+    }
+</script>
+</html>
