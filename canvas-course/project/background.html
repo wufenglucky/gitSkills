@@ -9,6 +9,8 @@
     当用户的浏览器不支持canvas时，请及时更换浏览器！
 </canvas>
 
+<script src="current.js"></script>
+
 <script>
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext("2d");
@@ -20,6 +22,55 @@
         canvas.height = 600;
 
         background();
+
+        setInterval(
+            function () {
+                currentPicture(context);
+                updatePicture();
+            },
+            50
+        );
+        // image1.src = "img1.jpeg";
+        // image2.src = "img2.jpeg";
+        // image1.onload = function () {
+        //     context.drawImage(image1, 350, 180, 50, 70);
+        // }
+        // image2.onload = function () {
+        //     context.drawImage(image2, 550, 200, 80, 40);
+        //     context.drawImage(image2, 680, 200, 80, 40);
+        // }
+        //
+        // for(var i = 0; i < current1.length; i ++){
+        //     context.beginPath();
+        //     context.moveTo(current1[i].x1, 215);
+        //     context.lineTo(current1[i].x2, 215);
+        //     context.closePath();
+        //     context.lineWidth = 5;
+        //     context.strokeStyle = "#f7fbf7"
+        //     context.stroke();
+        //
+        //     var x = current1[i].x1;
+        //     var num = parseInt((current1[i].x2 - current1[i].x1)/10);
+        //     for(var j = 0; j < num; j ++){
+        //         context.beginPath();
+        //         context.moveTo(x, current1[i].y);
+        //         context.lineTo(x+5, current1[i].y);
+        //         context.lineWidth = 1;
+        //         context.strokeStyle = "#ee0916";
+        //         context.closePath();
+        //         context.stroke();
+        //         x += 10;
+        //     }
+        // }
+    };
+
+    function updatePicture() {
+        var vx = 2;
+
+
+    }
+
+    function currentPicture(context) {
         image1.src = "img1.jpeg";
         image2.src = "img2.jpeg";
         image1.onload = function () {
@@ -29,9 +80,34 @@
             context.drawImage(image2, 550, 200, 80, 40);
             context.drawImage(image2, 680, 200, 80, 40);
         }
+
+        for(var i = 0; i < current1.length; i ++){
+            context.beginPath();
+            context.moveTo(current1[i].x1, 215);
+            context.lineTo(current1[i].x2, 215);
+            context.closePath();
+            context.lineWidth = 5;
+            context.strokeStyle = "#f7fbf7"
+            context.stroke();
+
+            var x = current1[i].x1;
+            var num = parseInt((current1[i].x2 - current1[i].x1)/10);
+            for(var j = 0; j < num; j ++){
+                context.beginPath();
+                context.moveTo(x, current1[i].y);
+                context.lineTo(x+5, current1[i].y);
+                context.lineWidth = 1;
+                context.strokeStyle = "#ee0916";
+                context.closePath();
+                context.stroke();
+                x += 10;
+            }
+        }
     }
+
     function background() {
-        context.fillStyle = "#0060cc";
+        //上
+        context.fillStyle = "#4347cc";
         context.beginPath();
         context.moveTo(0,0);
         context.lineTo(200, 120);
@@ -40,7 +116,8 @@
         context.closePath();
         context.fill();
 
-        context.fillStyle = "#0093cc";
+        //左
+        context.fillStyle = "#1c7bcc";
         context.beginPath();
         context.moveTo(0,0);
         context.lineTo(200, 120);
@@ -49,7 +126,8 @@
         context.closePath();
         context.fill();
 
-        context.fillStyle = "#38aecc";
+        //下
+        context.fillStyle = "#08b2cc";
         context.beginPath();
         context.moveTo(0,600);
         context.lineTo(200, 480);
@@ -58,7 +136,8 @@
         context.closePath();
         context.fill();
 
-        context.fillStyle = "#0093cc";
+        //右
+        context.fillStyle = "#1c7bcc";
         context.beginPath();
         context.moveTo(1000,0);
         context.lineTo(800, 120);
@@ -67,7 +146,8 @@
         context.closePath();
         context.fill();
 
-        context.fillStyle = "#04c1cc";
+        //后
+        context.fillStyle = "#47a6cc";
         context.beginPath();
         context.moveTo(200,120);
         context.lineTo(800, 120);
@@ -76,6 +156,7 @@
         context.closePath();
         context.fill();
     }
+
 </script>
 
 </body>
